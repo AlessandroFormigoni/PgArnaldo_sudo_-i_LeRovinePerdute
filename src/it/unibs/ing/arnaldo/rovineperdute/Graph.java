@@ -1,5 +1,31 @@
 package it.unibs.ing.arnaldo.rovineperdute;
 
-public class Graph {
+import java.util.*;
 
+public class Graph {
+	
+	private ArrayList<City> map = new ArrayList<City>();
+
+	public ArrayList<City> getList() {
+		return map;
+	}
+
+	public void setList(ArrayList<City> map) {
+		this.map = map;
+	}
+
+	public City cityFromID(int id) {
+		for (City city : map) {
+			if(city.getId()==id)
+				return city;
+		}
+		return null;
+	}
+
+	@Override
+	public String toString() {
+		return "Graph [map=" + map + "]";
+	}
+	
+	
 }
