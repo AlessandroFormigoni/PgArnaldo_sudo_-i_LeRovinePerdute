@@ -24,7 +24,7 @@ public class Graph {
 
 	@Override
 	public String toString() {
-		return "Graph [map=" + map + "]";
+		return "Graph [map= \n" + map + "]";
 	}
 	
 	

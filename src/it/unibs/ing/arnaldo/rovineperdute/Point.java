@@ -43,6 +43,11 @@ public class Point {
 	public void setH(int h) {
 		this.h = h;
 	}
+
+	@Override
+	public String toString() {
+		return "Point [x=" + x + ", y=" + y + ", h=" + h + "]";
+	}
 	
 	
 	

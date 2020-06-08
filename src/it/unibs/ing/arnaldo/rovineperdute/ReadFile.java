@@ -30,20 +30,20 @@ public class ReadFile {
 						 break;
 					 case XMLStreamConstants.START_ELEMENT: 
 						 switch (xmlr.getLocalName()) {
-						 case "map": 
-							 //xmlr.next();
-							 size = Integer.parseInt(xmlr.getAttributeValue(0));
-							 break;
-						 case "city":
-							 //xmlr.next();
-							 for (int i = 0; i < xmlr.getAttributeCount(); i++) {
-								 int id = Integer.parseInt(xmlr.getAttributeValue(i));
-								 String name = xmlr.getAttributeValue(i);
-								 int x = Integer.parseInt(xmlr.getAttributeValue(i));
-								 int y = Integer.parseInt(xmlr.getAttributeValue(i));
-								 int h = Integer.parseInt(xmlr.getAttributeValue(i));
-								 graph.getList().add(new City(name, id, new Point(x,y,h)));
-							 }
+							 case "map": 
+								 //xmlr.next();
+								 size = Integer.parseInt(xmlr.getAttributeValue(0));
+								 break;
+							 case "city":
+								 //xmlr.next();
+								 
+							int id = Integer.parseInt(xmlr.getAttributeValue(0));
+							String name = xmlr.getAttributeValue(1);
+							int x = Integer.parseInt(xmlr.getAttributeValue(2));
+							int y = Integer.parseInt(xmlr.getAttributeValue(3));
+							int h = Integer.parseInt(xmlr.getAttributeValue(4));
+							graph.getList().add(new City(name, id, new Point(x, y, h)));
+
 						 }
 						 break;
 					 case XMLStreamConstants.END_ELEMENT:
@@ -69,15 +69,16 @@ public class ReadFile {
 					 case XMLStreamConstants.START_ELEMENT: 
 						 switch (xmlr.getLocalName()) {
 						 case "city":
-							 xmlr.next();
 							 int id = Integer.parseInt(xmlr.getAttributeValue(0));
-							while(xmlr.hasNext() && !xmlr.getLocalName().equals("city")) {
+							 xmlr.next();
+							while(xmlr.hasNext()) {
 								if (xmlr.getEventType()==(XMLStreamConstants.START_ELEMENT)) {
-									xmlr.next();
 									int to = Integer.parseInt(xmlr.getAttributeValue(0));
 									City city = graph.cityFromID(to);
 									graph.getList().get(id).addCity(city);
 	
+								} else if (xmlr.getEventType() == XMLStreamConstants.END_ELEMENT) {
+									if (xmlr.getLocalName().equals("city")) break;
 								}
 								xmlr.next();
 							}

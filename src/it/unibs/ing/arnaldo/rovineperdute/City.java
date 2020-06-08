@@ -57,7 +57,18 @@ public class City {
 		distances[1] = coordinates.altitudeDifference(city.getCoordinates());
 		return distances;
 	}
-	
+
+	@Override
+	public String toString() {
+		String str =  "\nCity [name=" + name + ", id=" + id + ", coordinates=" + coordinates + "]\n";
+		StringBuffer buff = new StringBuffer();
+		buff.append(str);
+		for (City city : linkedCities.keySet()) {
+			buff.append("\t" + city.getName() + ", " + linkedCities.get(city)[0] + ", " + linkedCities.get(city)[1] + "\n");
+		}
+		return buff.toString();
+	}
+
 	
 
 }
