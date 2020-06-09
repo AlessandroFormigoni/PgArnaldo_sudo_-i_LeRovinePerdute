@@ -8,6 +8,8 @@ public class Main {
 		ReadFile.initializeReader();
 		ReadFile.extractLink();
 		System.out.println(ReadFile.getGraph().toString());
+		
+		//tests
 		System.out.println(ReadFile.getGraph().cityFromID(0).pointsTo(ReadFile.getGraph().cityFromID(1)));
 		System.out.println(ReadFile.getGraph().cityFromID(1).pointsTo(ReadFile.getGraph().cityFromID(0)));
 		System.out.println(ReadFile.getGraph().cityFromID(0).isPointedBy(ReadFile.getGraph().cityFromID(1)));
