@@ -80,7 +80,7 @@ public class City {
 	 */
 	public boolean isPointedBy(City city) {
 		for (City links : city.getLinkedCities().keySet()) {
-			if (links.getName().equals(this.name))
+			if (links.getId()==this.id)
 				return true;
 		}
 		return false;
