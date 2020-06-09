@@ -79,12 +79,10 @@ public class City {
 	 * Checks if you can cross from the query city to this city
 	 */
 	public boolean isPointedBy(City city) {
-		for (City links : city.getLinkedCities().keySet()) {
-			if (links.getId()==this.id)
-				return true;
-		}
-		return false;
+		
+		return city.pointsTo(this);
 	}
+	
 	/*
 	 * Checks if the arc can be crossed both ways
 	 */
