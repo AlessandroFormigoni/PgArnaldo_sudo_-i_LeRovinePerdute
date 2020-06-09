@@ -68,6 +68,29 @@ public class City {
 		}
 		return buff.toString();
 	}
+	/*
+	 * Checks if you can cross the arc from this city to query city
+	 */
+	public boolean pointsTo(City city) {
+		return linkedCities.containsKey(city);
+	}
+	
+	/*
+	 * Checks if you can cross from the query city to this city
+	 */
+	public boolean isPointedBy(City city) {
+		for (City links : city.getLinkedCities().keySet()) {
+			if (links.getName().equals(this.name))
+				return true;
+		}
+		return false;
+	}
+	/*
+	 * Checks if the arc can be crossed both ways
+	 */
+	public boolean reciprocalPointing(City city) {
+		return (pointsTo(city) && isPointedBy(city));
+	}
 
 	
 
