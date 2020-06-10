@@ -10,11 +10,12 @@ public class Dijkstra {
 	private static double[] dist = new double[ReadFile.size];
 	public static enum vehicle {PLANAR, VERTICAL};
 	
-	private static int minDistIndex(HashSet<City> group, Graph nodes) {
+	private static int minDistIndex(HashSet<City> group) {
 		int ind = 0;
 		double min = Double.POSITIVE_INFINITY;
-		for (int i = 0; i < dist.length; i++) {
-			if (dist[i] < min && group.contains(nodes.cityFromID(i))) {
+		for (City city : group) {
+			int i = city.getId();
+			if (dist[i] < min) {
 				min = dist[i];
 				ind = i;
 			}
@@ -34,7 +35,7 @@ public class Dijkstra {
 		dist[source.getId()] = 0;
 		
 		while (!toVisit.isEmpty()) {
-			City T = nodes.cityFromID(minDistIndex(toVisit, nodes));
+			City T = nodes.cityFromID(minDistIndex(toVisit));
 			toVisit.remove(T);
 			
 			for (City city : T.getLinkedCities().keySet()) {
