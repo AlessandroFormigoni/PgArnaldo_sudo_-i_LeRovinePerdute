@@ -34,7 +34,21 @@ public class City {
 	public void setLinkedCities(Map<City, Double[]> linkedCities) {
 		this.linkedCities = linkedCities;
 	}
-
+	/*
+	public City getClosestCity(int ind) {
+		
+		City closest = null;
+		double min = Double.POSITIVE_INFINITY;
+		for (City city : linkedCities.keySet()) {
+			if (linkedCities.get(city)[ind] < min) {
+				min = linkedCities.get(city)[ind];
+				closest = city;
+			}
+		}
+		return closest;
+		
+	}
+	*/
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -89,7 +103,7 @@ public class City {
 	public boolean reciprocalPointing(City city) {
 		return (pointsTo(city) && isPointedBy(city));
 	}
-
+	
 	
 
 }
