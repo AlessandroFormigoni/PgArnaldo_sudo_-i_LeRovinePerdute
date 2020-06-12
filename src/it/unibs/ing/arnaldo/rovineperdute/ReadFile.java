@@ -9,7 +9,7 @@ import javax.xml.stream.XMLStreamReader;
 public class ReadFile {
 	
 	static Graph graph = new Graph();
-	static String filename = "PgAr_Map_10000.xml";
+	static String filename = "PgAr_Map_50.xml";
 	static XMLStreamReader xmlr = null;
 	static int size;
 	

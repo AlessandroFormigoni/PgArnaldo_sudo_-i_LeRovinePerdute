@@ -27,6 +27,7 @@ public class Dijkstra {
 		ArrayList<City> toVisit = new ArrayList<City>();
 		prec = new City[ReadFile.size];
 		dist = new double[ReadFile.size];
+		int pathLenght[] = new int[ReadFile.size]; // stores the distance in terms of edges
 		for (City city : nodes.getList()) {
 			prec[city.getId()] = null;
 			dist[city.getId()] = Double.POSITIVE_INFINITY;
@@ -36,6 +37,7 @@ public class Dijkstra {
 		dist[source.getId()] = 0;
 		
 		while (!toVisit.isEmpty()) {
+			
 			City T = nodes.cityFromID(minDistIndex(toVisit));
 			toVisit.remove(T);
 			
@@ -43,13 +45,28 @@ public class Dijkstra {
 				
 				if (!toVisit.contains(city)) continue;
 				
-				double calcDist = dist[T.getId()] + T.getLinkedCities().get(city)[ind];
+				double calcDist = dist[T.getId()] + T.getLinkedCities().get(city)[ind];	
 				
 				if (calcDist < dist[city.getId()]) {
+					
 					dist[city.getId()] = calcDist;
 					prec[city.getId()] = T;
+					pathLenght[city.getId()] = pathLenght[T.getId()] + 1;
+					
+				} else if (calcDist == dist[city.getId()]) { // if we found two path with same distance...
+					
+					int prevoiusDistanceInEdges = pathLenght[city.getId()];
+					int newDistanceInEdges = pathLenght[T.getId()] + 1;
+					
+					if (prevoiusDistanceInEdges > newDistanceInEdges) { // and the new path has fewer edges...
+						prec[city.getId()] = T; // we update the previous node
+						pathLenght[city.getId()] = newDistanceInEdges;
+					} 	
+					
 				}
+
 			}
+			
 		}
 		
 		calculateRoute();
