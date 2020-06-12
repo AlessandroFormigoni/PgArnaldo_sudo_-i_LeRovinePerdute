@@ -8,7 +8,12 @@ public class City {
 	private int id;
 	private Point coordinates;
 	private Map<City,Double[]> linkedCities = new HashMap<City,Double[]>();
-	
+	/**
+	 * constructor
+	 * @param name
+	 * @param id
+	 * @param coordinates
+	 */
 	public City(String name, int id, Point coordinates) {
 		this.name = name;
 		this.id = id;
@@ -30,25 +35,17 @@ public class City {
 	public Map<City, Double[]> getLinkedCities() {
 		return linkedCities;
 	}
-
+    /**
+     * set the cities linked on the map (key City value/weight distance)
+     * the array of Double contains the 2 values ​​of the weight of the arc
+     * for linear distance and altitude difference
+     * @param linkedCities 
+     * see public addCity() 
+     */
 	public void setLinkedCities(Map<City, Double[]> linkedCities) {
 		this.linkedCities = linkedCities;
 	}
-	/*
-	public City getClosestCity(int ind) {
-		
-		City closest = null;
-		double min = Double.POSITIVE_INFINITY;
-		for (City city : linkedCities.keySet()) {
-			if (linkedCities.get(city)[ind] < min) {
-				min = linkedCities.get(city)[ind];
-				closest = city;
-			}
-		}
-		return closest;
-		
-	}
-	*/
+	
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -60,11 +57,16 @@ public class City {
 	public void setCoordinates(Point coordinates) {
 		this.coordinates = coordinates;
 	}
-	
+	/**
+	 * adds to the map of connected cities
+     * key City value/weight distance
+	 * @param city
+	 */
 	public void addCity(City city) {
 		linkedCities.put(city, calculateDistances(city));
 	}
 	/**
+	 * set distance value :
 	 * calculate linear distance and altitude difference for  
      * graph arc weight
 	 * @param city
@@ -87,14 +89,14 @@ public class City {
 		}
 		return buff.toString();
 	}
-	/*
+	/**
 	 * Checks if you can cross the arc from this city to query city
 	 */
 	public boolean pointsTo(City city) {
 		return linkedCities.containsKey(city);
 	}
 	
-	/*
+	/**
 	 * Checks if you can cross from the query city to this city
 	 */
 	public boolean isPointedBy(City city) {
@@ -102,7 +104,7 @@ public class City {
 		return city.pointsTo(this);
 	}
 	
-	/*
+	/**
 	 * Checks if the arc can be crossed both ways
 	 */
 	public boolean reciprocalPointing(City city) {

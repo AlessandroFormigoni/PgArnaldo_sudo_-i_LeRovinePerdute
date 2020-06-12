@@ -10,11 +10,15 @@ public class Main {
 		ReadFile.initializeReader();
 		ReadFile.extractLink();
 		
-		//System.out.println(ReadFile.getGraph().toString());
+		/**
+		 * System.out.println(ReadFile.getGraph().toString());
+		 */
 		WriteFile.initializeWriter();
 		WriteFile.printFile();
 		System.out.println(System.currentTimeMillis() - time + " ms");
-		//System.out.println(Dijkstra.display(ReadFile.getGraph().cityFromID(1999)));
+		/**
+		 * System.out.println(Dijkstra.display(ReadFile.getGraph().cityFromID(1999)));
+		 */
 	}
 
 }

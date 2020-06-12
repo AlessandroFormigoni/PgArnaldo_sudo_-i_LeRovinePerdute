@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"it.unibs.ing.arnaldo.rovineperdute","c":"WriteFile","l":"initializeWriter()"},{"p":"it.unibs.ing.arnaldo.rovineperdute","c":"WriteFile","l":"printFile()"},{"p":"it.unibs.ing.arnaldo.rovineperdute","c":"WriteFile","l":"WriteFile()","url":"%3Cinit%3E()"}]
