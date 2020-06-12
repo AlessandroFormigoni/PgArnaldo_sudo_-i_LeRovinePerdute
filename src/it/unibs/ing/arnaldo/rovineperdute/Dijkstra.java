@@ -55,10 +55,10 @@ public class Dijkstra {
 					
 				} else if (calcDist == dist[city.getId()]) { // if we found two path with same distance...
 					
-					int prevoiusDistanceInEdges = pathLenght[city.getId()];
+					int previousDistanceInEdges = pathLenght[city.getId()];
 					int newDistanceInEdges = pathLenght[T.getId()] + 1;
 					
-					if (prevoiusDistanceInEdges > newDistanceInEdges) { // and the new path has fewer edges...
+					if (previousDistanceInEdges > newDistanceInEdges) { // and the new path has fewer edges...
 						prec[city.getId()] = T; // we update the previous node
 						pathLenght[city.getId()] = newDistanceInEdges;
 					} 	
