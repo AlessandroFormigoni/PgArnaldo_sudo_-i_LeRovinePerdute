@@ -4,6 +4,10 @@ import java.util.*;
 
 public class Graph {
 	
+	/**
+	 * class containing list cities as (nodes)
+	 *  and represents the map 
+	 */
 	private ArrayList<City> map = new ArrayList<City>();
 
 	public ArrayList<City> getList() {

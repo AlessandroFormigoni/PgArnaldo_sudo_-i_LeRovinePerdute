@@ -64,7 +64,12 @@ public class City {
 	public void addCity(City city) {
 		linkedCities.put(city, calculateDistances(city));
 	}
-	
+	/**
+	 * calculate linear distance and altitude difference for  
+     * graph arc weight
+	 * @param city
+	 * @return distance
+	 */
 	public Double[] calculateDistances(City city) {
 		Double[] distances = new Double[2];
 		distances[0] = coordinates.distanceOnPlane(city.getCoordinates());

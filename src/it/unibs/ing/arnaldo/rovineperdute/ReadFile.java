@@ -21,7 +21,10 @@ public class ReadFile {
 		 System.out.println(e.getMessage());
 		}
 	}
-	
+	/**
+	 * 
+     *extracts city data such as id coordinates name from xml
+	 */
 	public static void extractCities() {
 		try {
 			while (xmlr.hasNext()) { 
@@ -59,7 +62,9 @@ public class ReadFile {
 			e.printStackTrace();
 	}
 	}
-	
+	/**
+	 * extracts link list city links by id
+	 */
 	public static void extractLink() {
 		try {
 			while (xmlr.hasNext()) { 

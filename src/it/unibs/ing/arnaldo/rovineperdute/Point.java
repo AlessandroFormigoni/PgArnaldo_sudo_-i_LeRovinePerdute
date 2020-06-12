@@ -5,17 +5,33 @@ public class Point {
 	private int x;
 	private int y;
 	private int h;
-	
+	/**
+     *coordinates from XML files for a city
+	 * @param x
+	 * @param y
+	 * @param h
+	 */
 	public Point(int x, int y, int h) {
 		this.x = x;
 		this.y = y;
 		this.h = h;
 	}
 	
+	/** 
+     *calculate linear distance between two coordinate points (x,y) 
+	 * @param p
+	 * @return distance
+	 * see City
+	 */
 	public double distanceOnPlane(Point p) {
 		return Math.sqrt(Math.pow(x-p.getX(), SQR)+Math.pow(y-p.getY(), SQR));
 	}
-	
+	/** 
+     *  calculate altitude difference values ( ​​h)
+	 * @param p
+	 * @return distance
+	 * see City
+	 */
 	public double altitudeDifference(Point p) {
 		return Math.abs(h-p.getH());
 	}
