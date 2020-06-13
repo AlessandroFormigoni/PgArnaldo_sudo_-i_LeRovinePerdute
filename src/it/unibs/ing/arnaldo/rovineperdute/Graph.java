@@ -18,12 +18,13 @@ public class Graph {
 		this.map = map;
 	}
 
-	public City cityFromID(int id) {
-		for (City city : map) {
+	public City cityFromID(int id) { // we know cities are stored in map ordered by id so that id == index
+		/*for (City city : map) {
 			if(city.getId()==id)
 				return city;
 		}
-		return null;
+		return null;*/
+		return map.get(id);
 	}
 
 	@Override

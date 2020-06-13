@@ -7,18 +7,15 @@ public class Main {
 		long time = System.currentTimeMillis();
 		ReadFile.initializeReader();
 		ReadFile.extractCities();
+		System.out.println("Tempo lettura elenco citta': " + (System.currentTimeMillis() - time) + " ms");
+		long time2 = System.currentTimeMillis();
 		ReadFile.initializeReader();
 		ReadFile.extractLink();
-		
-		/**
-		 * System.out.println(ReadFile.getGraph().toString());
-		 */
+		System.out.println("Tempo lettura citta' collegate: " + (System.currentTimeMillis() - time2) + " ms");
+		System.out.println("Tempo lettura totale: " + (System.currentTimeMillis() - time) + " ms");
 		WriteFile.initializeWriter();
 		WriteFile.printFile();
-		System.out.println(System.currentTimeMillis() - time + " ms");
-		/**
-		 * System.out.println(Dijkstra.display(ReadFile.getGraph().cityFromID(1999)));
-		 */
+		System.out.println("Tempo totale: " + (System.currentTimeMillis() - time) + " ms");
 	}
 
 }

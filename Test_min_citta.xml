@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map size="5">
+	<city id="0" name="campo base" x="8279" y="8338" h="0">
+		<link to="1"/>
+		<link to="4"/>
+	</city>
+	<city id="1" name="Tikal" x="1898" y="927" h="1">
+		<link to="2"/>
+	</city>
+	<city id="2" name="Teotiguacan" x="6317" y="3345" h="5">
+		<link to="3"/>
+	</city>
+	<city id="3" name="Mixco Vieio" x="4798" y="1462" h="12">
+	</city>
+	<city id="4" name="Rovine Perdute" x="4415" y="4849" h="10">
+		<link to="3"/>
+	</city>
+</map>

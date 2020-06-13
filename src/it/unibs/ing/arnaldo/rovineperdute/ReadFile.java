@@ -9,7 +9,7 @@ import javax.xml.stream.XMLStreamReader;
 public class ReadFile {
 	
 	static Graph graph = new Graph();
-	static String filename = "Test_min_citta.xml";
+	static String filename = "PgAr_Map_5.xml"; // to use Test_min_citta.xml set destination to id = size - 2!
 	static XMLStreamReader xmlr = null;
 	static int size;
 	
@@ -27,40 +27,34 @@ public class ReadFile {
 	 */
 	public static void extractCities() {
 		try {
-			while (xmlr.hasNext()) { 
-				 switch (xmlr.getEventType()) { 
-					 case XMLStreamConstants.START_DOCUMENT: 
-						 break;
-					 case XMLStreamConstants.START_ELEMENT: 
-						 switch (xmlr.getLocalName()) {
-							 case "map": 
-								 //xmlr.next();
-								 size = Integer.parseInt(xmlr.getAttributeValue(0));
-								 break;
-							 case "city":
-								 //xmlr.next();
-								 
-							int id = Integer.parseInt(xmlr.getAttributeValue(0));
-							String name = xmlr.getAttributeValue(1);
-							int x = Integer.parseInt(xmlr.getAttributeValue(2));
-							int y = Integer.parseInt(xmlr.getAttributeValue(3));
-							int h = Integer.parseInt(xmlr.getAttributeValue(4));
-							graph.getList().add(new City(name, id, new Point(x, y, h)));
+			while (xmlr.hasNext()) {
+				switch (xmlr.getEventType()) {
+				case XMLStreamConstants.START_DOCUMENT:
+					break;
+				case XMLStreamConstants.START_ELEMENT:
+					switch (xmlr.getLocalName()) {
+					case "map":
+						size = Integer.parseInt(xmlr.getAttributeValue(0));
+						break;
+					case "city":
 
-						 }
-						 break;
-					 case XMLStreamConstants.END_ELEMENT:
-						 break;
-					 case XMLStreamConstants.COMMENT:
-						 break; 
-					 case XMLStreamConstants.CHARACTERS:
-						 break;
-				 }
-				 xmlr.next();
+						int id = Integer.parseInt(xmlr.getAttributeValue(0));
+						String name = xmlr.getAttributeValue(1);
+						int x = Integer.parseInt(xmlr.getAttributeValue(2));
+						int y = Integer.parseInt(xmlr.getAttributeValue(3));
+						int h = Integer.parseInt(xmlr.getAttributeValue(4));
+						graph.getList().add(id, new City(name, id, new Point(x, y, h))); // we ensure index equals id
+
+					}
+					break;
+				default:
+					break;
+				}
+				xmlr.next();
 			}
 		} catch (XMLStreamException e) {
 			e.printStackTrace();
-	}
+		}
 	}
 	/**
 	 * extracts link list city links by id
@@ -74,8 +68,8 @@ public class ReadFile {
 					 case XMLStreamConstants.START_ELEMENT: 
 						 switch (xmlr.getLocalName()) {
 						 case "city":
-							 int id = Integer.parseInt(xmlr.getAttributeValue(0));
-							 xmlr.next();
+							int id = Integer.parseInt(xmlr.getAttributeValue(0));
+							xmlr.next();
 							while(xmlr.hasNext()) {
 								if (xmlr.getEventType()==(XMLStreamConstants.START_ELEMENT)) {
 									int to = Integer.parseInt(xmlr.getAttributeValue(0));
@@ -89,12 +83,7 @@ public class ReadFile {
 							}
 						 }
 						 break;
-					 case XMLStreamConstants.END_ELEMENT:
-						 break;
-					 case XMLStreamConstants.COMMENT:
-						 break; 
-					 case XMLStreamConstants.CHARACTERS:
-						 break;
+					 default: break;
 				 }
 				 xmlr.next();
 			}

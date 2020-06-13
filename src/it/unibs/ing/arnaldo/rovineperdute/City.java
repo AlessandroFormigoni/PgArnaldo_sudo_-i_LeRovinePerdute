@@ -8,6 +8,7 @@ public class City {
 	private int id;
 	private Point coordinates;
 	private Map<City,Double[]> linkedCities = new HashMap<City,Double[]>();
+	
 	/**
 	 * constructor
 	 * @param name
@@ -40,7 +41,6 @@ public class City {
      * the array of Double contains the 2 values ​​of the weight of the arc
      * for linear distance and altitude difference
      * @param linkedCities 
-     * see public addCity() 
      */
 	public void setLinkedCities(Map<City, Double[]> linkedCities) {
 		this.linkedCities = linkedCities;
@@ -58,18 +58,18 @@ public class City {
 		this.coordinates = coordinates;
 	}
 	/**
-	 * adds to the map of connected cities
-     * key City value/weight distance
-	 * @param city
+	 * Adds a city to the map of connected cities
+	 * @param city the city to add
 	 */
 	public void addCity(City city) {
 		linkedCities.put(city, calculateDistances(city));
 	}
+	
 	/**
 	 * set distance value :
 	 * calculate linear distance and altitude difference for  
      * graph arc weight
-	 * @param city
+	 * @param city the city to calculate distance from
 	 * @return distance
 	 */
 	public Double[] calculateDistances(City city) {
@@ -89,6 +89,9 @@ public class City {
 		}
 		return buff.toString();
 	}
+	
+	// UNUSED METHODS :
+	
 	/**
 	 * Checks if you can cross the arc from this city to query city
 	 */
