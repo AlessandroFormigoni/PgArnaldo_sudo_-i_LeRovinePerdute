@@ -2,6 +2,11 @@ package it.unibs.ing.arnaldo.rovineperdute;
 
 import java.util.*;
 
+/**
+ * Represents a city object.
+ * @author Simone, Alessandro, Francesca
+ *
+ */
 public class City {
 
 	private String name;

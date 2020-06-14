@@ -2,7 +2,12 @@ package it.unibs.ing.arnaldo.rovineperdute;
 
 import java.util.ArrayList;
 
-
+/**
+ * Contains methods to perform calculations on {@linkplain Graph} using 
+ * Dijkstra algorithm
+ * @author Simone, Alessandro, Francesca
+ *
+ */
 public class Dijkstra {
 
 	private static City[] prec = new City[ReadFile.size]; // Example: prec[5] stores the previous city of city with id = 5
@@ -84,6 +89,10 @@ public class Dijkstra {
 		calculateRoute(ReadFile.size - 1); // calculate route from source to max id city
 	}
 	
+	/**
+	 * Calculates the route to a given destination and stores it in a static array
+	 * @param cityId the id of destination city
+	 */
 	public static void calculateRoute(int cityId) {
 		
 		City destination = ReadFile.getGraph().cityFromID(cityId); 
@@ -99,6 +108,11 @@ public class Dijkstra {
 		
 	}
 
+	/**
+	 * Returns a string containing the sequence of cities to reach a destination
+	 * @param destination
+	 * @return string sequence
+	 */
 	public static String display(City destination) {
 		
 		double totalDistance = dist[destination.getId()];

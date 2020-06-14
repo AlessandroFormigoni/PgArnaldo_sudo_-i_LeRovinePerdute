@@ -6,6 +6,11 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
+/**
+ * Utility class to read the given XMLs
+ * @author Simone, Alessandro, Francesca
+ *
+ */
 public class ReadFile {
 	
 	static Graph graph = new Graph();
@@ -21,9 +26,10 @@ public class ReadFile {
 		 System.out.println(e.getMessage());
 		}
 	}
+	
 	/**
 	 * 
-     *extracts city data such as id coordinates name from xml
+     *extracts city data such as id, coordinates and name from xml
 	 */
 	public static void extractCities() {
 		try {
@@ -56,8 +62,9 @@ public class ReadFile {
 			e.printStackTrace();
 		}
 	}
+	
 	/**
-	 * extracts link list city links by id
+	 * extracts linked cities of each city 
 	 */
 	public static void extractLink() {
 		try {
@@ -89,7 +96,7 @@ public class ReadFile {
 			}
 		} catch (XMLStreamException e) {
 			e.printStackTrace();
-	}
+		}
 		
 	}
 	
